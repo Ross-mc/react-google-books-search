@@ -9,6 +9,7 @@ module.exports = {
       .catch(err => res.status(422).json(err))
   },
   findById: (req, res) => {
+    console.log(req.params.id)
     db.Books
       .findById(req.params.id)
       .then(foundBook => res.json(foundBook))
