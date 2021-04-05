@@ -2,7 +2,8 @@ const express = require("express");
 const path = require("path");
 const PORT = process.env.PORT || 3001;
 const logger = require("morgan");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
+const routes = require("./routes")
 
 const app = express();
 
@@ -22,7 +23,7 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googleBooks", {
   // useUnifiedTopology: true,
 });
 
-// Define API routes here
+app.use(routes)
 
 // Send every other request to the React app
 // Define any API routes before this runs
