@@ -7,36 +7,34 @@ const BooksSchema = new Schema({
     {
       title: {
         type: String,
-        required: "Title is required"
-      }
-    },
-    {
+        required: "Title is required",
+      },
       authors: {
         type: Array,
-        required: "An array of authors is required (a single author should still be provided in an array)"
-      }
-    },
-    {
+        required:
+          "An array of authors is required (a single author should still be provided in an array)",
+      },
+
       description: {
         type: String,
-        required: "Description is required"
-      }
-    },
-    {
+        required: "Description is required",
+      },
       image: {
         type: String,
-        default: "https://specials-images.forbesimg.com/imageserve/5f85be4ed0acaafe77436710/960x0.jpg"
-      }
-    },
-    {
+        default:
+          "https://specials-images.forbesimg.com/imageserve/5f85be4ed0acaafe77436710/960x0.jpg",
+      },
       link: {
         type: String,
-        required: "Link is required"
-      }
+        required: "Link is required",
+      },
+      date: { type: Date,
+         default: Date.now
+      },
     },
-  ]
-})
+  ],
+});
 
-const Books = mongoose.model("books", BooksSchema)
+const Books = mongoose.model("books", BooksSchema);
 
-module.exports = Books
+module.exports = Books;
