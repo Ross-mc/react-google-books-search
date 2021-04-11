@@ -1,5 +1,6 @@
-import Alert from "../components/Alert"
-import Spinner from "../components/Spinner"
+import Alert from "../components/Alert";
+import Books from "../components/Books"
+import Spinner from "../components/Spinner";
 
 const Search = ({ searchTermRef, handleFormSubmit, alert, loading, books }) => {
   return (
@@ -20,7 +21,8 @@ const Search = ({ searchTermRef, handleFormSubmit, alert, loading, books }) => {
         Submit
       </button>
     </form>
-    {loading ? <Spinner /> : <h1>We found some books</h1>}
+    {loading && <Spinner />}
+    {books.length > 0 && <Books books={books} />}
     </>
   );
 };

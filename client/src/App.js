@@ -1,3 +1,4 @@
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import React, {useState, useRef} from "react";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
@@ -32,39 +33,51 @@ const App = () => {
       .then(res => res.json())
       .then(result => {
         setLoading(false);
-        setBooksFromGoogle(result.items.map(({volumeInfo}) => {
-          return {
-            authors: volumeInfo.authors || "No Authors Available",
+        setBooksFromGoogle([])
+        setBooksFromGoogle(result.items.reduce((acc, {volumeInfo}) => {
+          if (volumeInfo.language !== "en"){
+            return acc
+          }
+          const book = {
+            authors: volumeInfo.authors || [],
             description: volumeInfo.description || "No Description Available",
             image: volumeInfo?.imageLinks?.thumbnail || defaultImg,
             link: volumeInfo.previewLink,
             title: volumeInfo.title
           }
-        }))
+          acc.push(book)
+          return acc
+        }, []))
       })
   }
 
   return (
     <>
-    <Router>
-    <header>
-      <Navbar />
-    </header>
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/search">
-          <Search searchTermRef={searchTermRef} handleFormSubmit={handleFormSubmit} alert={alert} loading={loading} books={booksFromGoogle}/>
-        </Route>
-        <Route path="/saved">
-          <Saved />
-        </Route>
-        <Route path="*">
-          <NoMatch/>
-        </Route>
-      </Switch>
-    </Router>
+      <Router>
+        <header>
+          <Navbar />
+        </header>
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/search">
+            <Search
+              searchTermRef={searchTermRef}
+              handleFormSubmit={handleFormSubmit}
+              alert={alert}
+              loading={loading}
+              books={booksFromGoogle}
+            />
+          </Route>
+          <Route path="/saved">
+            <Saved />
+          </Route>
+          <Route path="*">
+            <NoMatch />
+          </Route>
+        </Switch>
+      </Router>
     </>
   );
 }
