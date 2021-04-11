@@ -22,7 +22,7 @@ const Search = ({ searchTermRef, handleFormSubmit, alert, loading, books }) => {
       </button>
     </form>
     {loading && <Spinner />}
-    {books.length > 0 && <Books books={books} />}
+    {books.length > 0 && <Books books={books} parent={"search"}/>}
     </>
   );
 };
