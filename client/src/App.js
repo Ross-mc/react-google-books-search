@@ -1,5 +1,5 @@
 import './App.css';
-import React from "react";
+import React, {useState} from "react";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import Navbar from "./components/Navbar"
@@ -8,7 +8,22 @@ import Search from "./pages/Search";
 import Saved from "./pages/Saved";
 import NoMatch from "./pages/NoMatch";
 
-function App() {
+const App = () => {
+  const [alert, setAlert] = useState(false)
+  const searchTermRef = useRef("");
+
+  const handleFormSubmit = e => {
+    e.preventDefault();
+    if (searchTermRef.current.value = ""){
+      setAlert(true);
+      return;
+    }
+    setAlert(false);
+    console.log(' i am the search term', searchTermRef.current.value);
+  }
+
+
+
   return (
     <>
 
@@ -21,7 +36,7 @@ function App() {
           <Home />
         </Route>
         <Route path="/search">
-          <Search />
+          <Search ref={searchTermRef} handleFormSubmit={handleFormSubmit} alert={alert}/>
         </Route>
         <Route path="/saved">
           <Saved />
