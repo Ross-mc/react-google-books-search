@@ -7,9 +7,18 @@ const Book = ({book}) => {
       <h5 className="card-title">{book.title}</h5>
       {book.authors.length > 0 ? <h6 className="card-subtitle mb-2 text-muted">Written by: {book.authors.join(", ")}</h6> : <h6 className="card-subtitle mb-2 text-muted">No Author Information Available</h6>}
       <p className="card-text">{book.description.length > 800 ? book.description.slice(0, 800) + "..." : book.description}</p>
-      <Link className="btn btn-primary btn-small card-btn" to={book.link} role="button">
-          View on Google Books
-      </Link>
+      <ul className="list-group list-group-horizontal">
+        <li className="list-group-item flex-fill">
+        <Link className="btn btn-primary btn-small" to={book.link} role="button">
+            View on Google
+        </Link>
+        </li>
+        <li className="list-group-item flex-fill">
+        <button className="btn btn-primary btn-small" role="button">
+            Save to Database
+        </button>
+        </li>
+      </ul>
     </div>
   )
 }

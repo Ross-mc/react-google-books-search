@@ -49,16 +49,29 @@ form{
   margin: 0 auto;
 }
 
-.card-btn{
+.list-group-horizontal{
   position: absolute;
   bottom: 10px;
-  width: 60%;
+  width: 98%;
   margin: 10;
   left: 50%;
   transform: translateX(-50%);
+  border: none;
+}
+
+li{
+  border: none !important;
+}
+
+ul{
+  border: none !important;
+}
+
+.btn-small{
+  width: 120%;
 }
 
 .card-text{
-  margin-bottom: 4rem;
+  margin-bottom: 6rem;
 }
 
