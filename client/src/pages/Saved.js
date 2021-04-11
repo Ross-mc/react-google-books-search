@@ -29,6 +29,7 @@ const Saved = () => {
 
   return (
     <>
+    <h2>Saved Books</h2>
     {loading ? <Spinner /> : booksFromDatabase.length > 0 ? <Books books={booksFromDatabase} parent={"saved"} deleteBtnClickHandler={deleteBtnClickHandler}/> : <h1>No Books are currently available in our Database,</h1>}
     </>
   )
