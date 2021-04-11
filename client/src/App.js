@@ -44,7 +44,6 @@ const App = () => {
       })
   }
 
-
   return (
     <>
     <Router>
