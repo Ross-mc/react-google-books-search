@@ -2,7 +2,7 @@
   "name": "21.0-react-google-books-search",
   "version": "1.0.0",
   "description": "A MERN stack application to search the Google Books API and save to a MongoDB",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",

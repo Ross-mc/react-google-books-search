@@ -25,13 +25,14 @@ const Book = ({book, parent, deleteBtnClickHandler, saveBookHandler}) => {
       </p>
       <ul className="list-group list-group-horizontal">
         <li className="list-group-item flex-fill">
-          <Link
+          <a
             className="btn btn-primary btn-small"
-            to={book.link}
+            href={book.link}
             role="button"
+            target="_blank"
           >
             View on Google
-          </Link>
+          </a>
         </li>
         <li className="list-group-item flex-fill">
           {parent === "search" ? (
