@@ -1,8 +1,17 @@
 import Alert from "../components/Alert";
 import Books from "../components/Books";
 import Spinner from "../components/Spinner";
+import DB from "../utils/DB"
 
 const Search = ({ searchTermRef, handleFormSubmit, alert, loading, books }) => {
+
+  const saveBookHandler = (book) => {
+    DB.saveBook(book)
+      .then((res) => res.json())
+      .then((result) => console.log(result))
+      .catch((err) => console.log(err));
+  }; 
+
   return (
     <>
     <form onSubmit={handleFormSubmit}>
@@ -22,7 +31,7 @@ const Search = ({ searchTermRef, handleFormSubmit, alert, loading, books }) => {
       </button>
     </form>
     {loading && <Spinner />}
-    {books.length > 0 && <Books books={books} parent={"search"}/>}
+    {books.length > 0 && <Books books={books} parent={"search"} saveBookHandler={saveBookHandler}/>}
     </>
   );
 };

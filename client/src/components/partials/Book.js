@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 
-const Book = ({book, parent, deleteBtnClickHandler}) => {
+const Book = ({book, parent, deleteBtnClickHandler, saveBookHandler}) => {
   return (
     <div className="card">
       <img
@@ -35,7 +35,7 @@ const Book = ({book, parent, deleteBtnClickHandler}) => {
         </li>
         <li className="list-group-item flex-fill">
           {parent === "search" ? (
-            <button className="btn btn-success btn-small" role="button">
+            <button className="btn btn-success btn-small" role="button" onClick={() => saveBookHandler(book)}>
               Save to Database
             </button>
           ) : (
