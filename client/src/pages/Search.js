@@ -1,7 +1,7 @@
 import Alert from "../components/Alert"
 import Spinner from "../components/Spinner"
 
-const Search = ({ searchTermRef, handleFormSubmit, alert, loading }) => {
+const Search = ({ searchTermRef, handleFormSubmit, alert, loading, books }) => {
   return (
     <>
     <form onSubmit={handleFormSubmit}>
