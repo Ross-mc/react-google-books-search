@@ -1,11 +1,36 @@
 import logo from './logo.svg';
 import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
+import Home from "./pages/Home";
+import Search from "./pages/Search";
+import Saved from "./pages/Saved";
+import NoMatch from "./pages/NoMatch";
 
 function App() {
   return (
-    <div className="App">
-
-    </div>
+    <>
+    <header>
+      <Navbar />
+    </header>
+    <Router> 
+      <Switch>
+        <Route exact path="/">
+          <Home />
+        </Route>
+        <Route path="/search">
+          <Search />
+        </Route>
+        <Route path="/saved">
+          <Saved />
+        </Route>
+        <Route path="*">
+          <NoMatch/>
+        </Route>
+      </Switch>
+    </Router>
+    </>
   );
 }
 
