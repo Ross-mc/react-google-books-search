@@ -5,7 +5,7 @@ const Home = () => {
     <div className="jumbotron">
       <h1 className="display-4">Google Books Search</h1>
       <p className="lead">
-        An application for searching a storing books found through the Google Books API.
+        An application for searching and storing books found through the Google Books API.
       </p>
       <hr className="my-4" />
       <p>

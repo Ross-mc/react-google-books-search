@@ -1,3 +1,8 @@
 .btn {
   margin-right: 20px;
 }
+
+form{
+  max-width: 600px;
+  margin: 15px auto;
+}

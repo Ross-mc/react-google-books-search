@@ -1,5 +1,5 @@
 import './App.css';
-import React, {useState} from "react";
+import React, {useState, useRef} from "react";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import Navbar from "./components/Navbar"
@@ -14,7 +14,7 @@ const App = () => {
 
   const handleFormSubmit = e => {
     e.preventDefault();
-    if (searchTermRef.current.value = ""){
+    if (!searchTermRef.current.value){
       setAlert(true);
       return;
     }
@@ -36,7 +36,7 @@ const App = () => {
           <Home />
         </Route>
         <Route path="/search">
-          <Search ref={searchTermRef} handleFormSubmit={handleFormSubmit} alert={alert}/>
+          <Search searchTermRef={searchTermRef} handleFormSubmit={handleFormSubmit} alert={alert}/>
         </Route>
         <Route path="/saved">
           <Saved />
