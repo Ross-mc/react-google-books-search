@@ -1,5 +1,5 @@
 import Alert from "../components/Alert";
-import Books from "../components/Books"
+import Books from "../components/Books";
 import Spinner from "../components/Spinner";
 
 const Search = ({ searchTermRef, handleFormSubmit, alert, loading, books }) => {

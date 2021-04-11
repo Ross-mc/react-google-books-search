@@ -1,6 +1,6 @@
 import {Link} from "react-router-dom";
 
-const Book = ({book, parent}) => {
+const Book = ({book, parent, deleteBtnClickHandler}) => {
   return (
     <div className="card">
       <img
@@ -39,8 +39,8 @@ const Book = ({book, parent}) => {
               Save to Database
             </button>
           ) : (
-            <button className="btn btn-danger btn-small" role="button">
-              Delete from Database
+            <button className="btn btn-danger btn-small" role="button" onClick={() => deleteBtnClickHandler(book._id)}>
+              Delete this Book
             </button>
           )}
         </li>
