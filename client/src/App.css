@@ -6,3 +6,22 @@ form{
   max-width: 600px;
   margin: 15px auto;
 }
+
+.spinner-container{
+  width: 90%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+#spinner{
+  height: 30%;
+  width: 30%
+}
+
+@media(min-width: 800px){
+  #spinner{
+    height: 225px;
+    width: 225px
+  }
+  
+}

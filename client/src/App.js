@@ -11,16 +11,23 @@ import API from "./utils/API"
 
 const App = () => {
   const [alert, setAlert] = useState(false);
+  const [loading, setLoading] = useState(false);
   const searchTermRef = useRef("");
 
   const handleFormSubmit = e => {
     e.preventDefault();
+    setLoading(true)
     if (!searchTermRef.current.value){
       setAlert(true);
       return;
     }
     setAlert(false);
-    API.submitSearch(searchTermRef.current.value).then(res => res.json()).then(result => console.log(result))
+    API.submitSearch(searchTermRef.current.value)
+      .then(res => res.json())
+      .then(result => {
+        setLoading(false);
+        console.log(result);
+      })
   }
 
 
@@ -35,7 +42,7 @@ const App = () => {
           <Home />
         </Route>
         <Route path="/search">
-          <Search searchTermRef={searchTermRef} handleFormSubmit={handleFormSubmit} alert={alert}/>
+          <Search searchTermRef={searchTermRef} handleFormSubmit={handleFormSubmit} alert={alert} loading={loading}/>
         </Route>
         <Route path="/saved">
           <Saved />

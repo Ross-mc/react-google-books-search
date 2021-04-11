@@ -1,7 +1,9 @@
 import Alert from "../components/Alert"
+import Spinner from "../components/Spinner"
 
-const Search = ({ searchTermRef, handleFormSubmit, alert }) => {
+const Search = ({ searchTermRef, handleFormSubmit, alert, loading }) => {
   return (
+    <>
     <form onSubmit={handleFormSubmit}>
       <div className="form-group">
         <label htmlFor="booksearch">Search</label>
@@ -18,6 +20,8 @@ const Search = ({ searchTermRef, handleFormSubmit, alert }) => {
         Submit
       </button>
     </form>
+    {loading ? <Spinner /> : <h1>We found some books</h1>}
+    </>
   );
 };
 
