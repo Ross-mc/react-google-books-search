@@ -8,7 +8,7 @@ module.exports = {
     const formattedSearchTerm = searchTerm.trim().replace(/\s/g,"-");//remove leading and ending white spaces, change internal spaces to dash
     axios
       .get(
-        `https://www.googleapis.com/books/v1/volumes?q=${formattedSearchTerm}&key=${API_KEY}`
+        `https://www.googleapis.com/books/v1/volumes?q=${formattedSearchTerm}&key=${API_KEY}&maxResults=40`
       )
       .then((result) => res.json(result.data))
       .catch((err) => res.status(400).json(err));
