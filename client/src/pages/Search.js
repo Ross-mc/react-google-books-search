@@ -1,16 +1,12 @@
 import Alert from "../components/Alert";
 import Books from "../components/Books";
+import Failure from "../components/FailureAlert";
 import Spinner from "../components/Spinner";
-import DB from "../utils/DB"
+import Success from "../components/SuccessAlert";
 
-const Search = ({ searchTermRef, handleFormSubmit, alert, loading, books }) => {
 
-  const saveBookHandler = (book) => {
-    DB.saveBook(book)
-      .then((res) => res.json())
-      .then((result) => console.log(result))
-      .catch((err) => console.log(err));
-  }; 
+const Search = ({ searchTermRef, handleFormSubmit, alert, loading, books, saveBookHandler, success, failure }) => {
+
 
   return (
     <>
@@ -30,6 +26,8 @@ const Search = ({ searchTermRef, handleFormSubmit, alert, loading, books }) => {
         Submit
       </button>
     </form>
+    {success && <Success />}
+    {failure && <Failure />}
     {loading && <Spinner />}
     {books.length > 0 && <Books books={books} parent={"search"} saveBookHandler={saveBookHandler}/>}
     </>

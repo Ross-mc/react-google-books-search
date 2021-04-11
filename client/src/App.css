@@ -75,3 +75,17 @@ ul{
   margin-bottom: 6rem;
 }
 
+.alert{
+  position: fixed;
+  z-index: 100;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+@media(min-width: 800px){
+  .alert{
+    width: 600px;
+  }
+}
+

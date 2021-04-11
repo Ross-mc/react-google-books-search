@@ -2,13 +2,13 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
 import React, {useState, useRef} from "react";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
-import { useMediaQuery } from "react-responsive";
-import Navbar from "./components/Navbar"
+import Navbar from "./components/Navbar";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Saved from "./pages/Saved";
 import NoMatch from "./pages/NoMatch";
 import API from "./utils/API"
+import DB from "./utils/DB";
 import defaultImg from "./assets/default.png"
 
 
@@ -16,6 +16,8 @@ const App = () => {
   const [alert, setAlert] = useState(false);
   const [loading, setLoading] = useState(false);
   const [booksFromGoogle, setBooksFromGoogle] = useState([]);
+  const [success, setSuccess] = useState(false);
+  const [failure, setFailure] = useState(false);
 
   const searchTermRef = useRef("");
 
@@ -51,6 +53,20 @@ const App = () => {
       })
   }
 
+  const saveBookHandler = (book) => {
+    DB.saveBook(book)
+      .then((res) => res.json())
+      .then((result) => {
+        setSuccess(true);
+        setTimeout(() => setSuccess(false), 2000)
+      })
+      .catch((err) => {
+        setFailure(true);
+        setTimeout(() => setFailure(false), 2000)
+      });
+  }; 
+
+
   return (
     <>
       <Router>
@@ -68,6 +84,9 @@ const App = () => {
               alert={alert}
               loading={loading}
               books={booksFromGoogle}
+              saveBookHandler={saveBookHandler}
+              success={success}
+              failure={failure}
             />
           </Route>
           <Route path="/saved">
