@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import React from "react";
 import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
@@ -12,10 +11,11 @@ import NoMatch from "./pages/NoMatch";
 function App() {
   return (
     <>
+
+    <Router>
     <header>
       <Navbar />
     </header>
-    <Router> 
       <Switch>
         <Route exact path="/">
           <Home />
