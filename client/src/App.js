@@ -23,12 +23,12 @@ const App = () => {
 
   const handleFormSubmit = e => {
     e.preventDefault();
-    setLoading(true)
     if (!searchTermRef.current.value){
       setAlert(true);
       return;
     }
     setAlert(false);
+    setLoading(true)
     // the google API occasionally does not have all the data required, therefore we have set some default
     // values which will be handled on the render
     API.submitSearch(searchTermRef.current.value)
